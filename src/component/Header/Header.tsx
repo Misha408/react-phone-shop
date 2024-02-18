@@ -20,21 +20,21 @@ export const Header = () => {
           pagination
           modules={[Navigation, Pagination, A11y]}
         >
-          <SwiperSlide>
+          <SwiperSlide data-swiper-autoplay="5000">
             <img
               src="img\banner-phones.jpg"
               alt="phones"
               className="swiper-img"
             />
           </SwiperSlide>
-          <SwiperSlide>
+          <SwiperSlide data-swiper-autoplay="5000">
             <img
               src="img\banner-accessories.jpg"
               alt="accessories"
               className="swiper-img"
             />
           </SwiperSlide>
-          <SwiperSlide>
+          <SwiperSlide data-swiper-autoplay="5000">
             <img
               src="img/banner-tablets.jpg"
               alt="tablets"

@@ -1,7 +1,11 @@
 import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
 import cn from 'classnames';
-
-import { useContext, useState } from 'react';
+import {
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 import { ProductContext } from '../../ProductContext';
 import { PathName } from '../../enums';
 import { SearchParams, getSearchWith } from '../../utils/searchHelper';
@@ -24,11 +28,22 @@ export const NavBar = () => {
 
   const query = searchParams.get('query') || '';
 
-  function setSearchWith(params: SearchParams) {
-    const search: string = getSearchWith(searchParams, params);
+  const setSearchWith = useCallback(
+    (params: SearchParams) => {
+      const search: string = getSearchWith(searchParams, params);
 
-    setSearchParams(search);
-  }
+      setSearchParams(search);
+    }, [searchParams, setSearchParams],
+  );
+
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      setSearchWith({ query: query || null });
+      searchParams.set('query', query);
+    }, 1000);
+
+    return () => clearTimeout(timerId);
+  }, [query, searchParams, setSearchWith]);
 
   function handleQueryChange(event: React.ChangeEvent<HTMLInputElement>) {
     setSearchWith({ query: event.target.value || null });

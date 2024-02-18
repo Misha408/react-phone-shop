@@ -1,6 +1,10 @@
 import { useContext, useEffect, useState } from 'react';
 import cn from 'classnames';
-import { Link, useParams } from 'react-router-dom';
+import {
+  Link,
+  useNavigate,
+  useParams,
+} from 'react-router-dom';
 import { getProduct } from '../../api/api';
 import { Loader } from '../Loader';
 import { Phone } from '../../Type/Phone';
@@ -19,6 +23,8 @@ export const ProductDetailsPage = () => {
     addCart,
     addFavourites,
   } = useContext(ProductContext);
+
+  const navigate = useNavigate();
 
   const [product, setProduct] = useState<Phone>();
   const [loading, setLoading] = useState<boolean>(false);
@@ -55,6 +61,10 @@ export const ProductDetailsPage = () => {
     return <Loader />;
   }
 
+  const goBack = () => {
+    navigate(-1);
+  };
+
   return (
     <section className="details">
       <div className="container">
@@ -84,8 +94,9 @@ export const ProductDetailsPage = () => {
         </div>
 
         <Link
-          to="../"
+          to=".."
           className="details__back"
+          onClick={() => goBack()}
           data-cy="backButton"
         >
           Back
@@ -120,29 +131,6 @@ export const ProductDetailsPage = () => {
           </div>
 
           <div className="details__wrap-information">
-            <div className="details__colors">
-              <p className="details__colors__title">
-                Available colors
-              </p>
-
-              <div className="details__colors__color" />
-            </div>
-
-            <div className="details__capacity">
-              <div className="details__capacity__title"> Select capacity </div>
-
-              <div className="details__capacity__wrap">
-                {product.capacityAvailable.map((capacity) => (
-                  <button
-                    type="button"
-                    className="details__capacity__btn"
-                  >
-                    {capacity}
-                  </button>
-                ))}
-              </div>
-            </div>
-
             <div className="details__prise">
               <div className="details__prise__wrap">
                 <p className="details__prise-new">
@@ -236,7 +224,7 @@ export const ProductDetailsPage = () => {
             <h2 className="details__about__title"> About </h2>
 
             {product.description.map((desc) => (
-              <div className="details__about__desc">
+              <div className="details__about__desc" key={desc.title}>
                 <h3 className="details__about__desc-title">
                   {desc.title}
                 </h3>
@@ -313,6 +301,7 @@ export const ProductDetailsPage = () => {
               <div className="details__specs__values">
                 {product.cell.map((c) => (
                   <p
+                    key={c}
                     className="details__specs__value details__specs__value-cell"
                   >
                     {c}

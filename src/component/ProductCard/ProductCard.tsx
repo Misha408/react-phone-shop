@@ -52,12 +52,12 @@ export const ProductCard: React.FC<Props> = ({ product, sale }) => {
 
         <div className="card__price">
           <p className="card__price-new">
-            {`$${fullPrice}`}
+            {`$${price}`}
           </p>
 
           <p className="card__price-old">
             {sale && (
-              `$${price}`
+              `$${fullPrice}`
             )}
           </p>
         </div>

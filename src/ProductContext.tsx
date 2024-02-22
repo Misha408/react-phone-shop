@@ -1,8 +1,14 @@
-import React, { useState, useMemo, useCallback } from 'react';
+import React, {
+  useState,
+  useMemo,
+  useCallback,
+  useEffect,
+} from 'react';
 import { Product } from './Type/Product';
 import { Context } from './Type/Context';
 import { Cart } from './Type/Cart';
 import { useLocalSrorage } from './hoocks/useLocalStorage';
+import { getPeople } from './api/api';
 
 export const ProductContext = React.createContext<Context>({
   products: [],
@@ -14,7 +20,7 @@ export const ProductContext = React.createContext<Context>({
   accessories: [],
   setAccessories: () => { },
   filterdProducts: [],
-  setFilterdProducts: () => {},
+  setFilterdProducts: () => { },
   query: '',
   setQuery: () => { },
   cartItems: [],
@@ -43,6 +49,11 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
   const [favourites, setFavourites] = useLocalSrorage<Product[]>(
     'favourites', [],
   );
+
+  useEffect(() => {
+    getPeople()
+      .then(setProducts);
+  }, [setProducts]);
 
   const hasItems = useCallback(
     (prodId: number, product: (Product | Cart)[]): boolean => {

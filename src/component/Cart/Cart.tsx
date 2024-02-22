@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { ProductContext } from '../../ProductContext';
 import { CartItem } from '../CartItem';
@@ -6,6 +6,8 @@ import { CartItem } from '../CartItem';
 export const Cart = () => {
   const { cartItems } = useContext(ProductContext);
   const [massege, setMassege] = useState<boolean>(false);
+
+  const navigate = useNavigate();
 
   const totalQuantity = () => {
     let count = 0;
@@ -35,6 +37,10 @@ export const Cart = () => {
     }, 3000);
   };
 
+  const goBack = () => {
+    navigate(-1);
+  };
+
   return (
     <section className="cart">
       <div className="container">
@@ -42,6 +48,7 @@ export const Cart = () => {
           to="../"
           className="details__back"
           data-cy="backButton"
+          onClick={() => goBack()}
         >
           Back
         </Link>

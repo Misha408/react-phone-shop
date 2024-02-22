@@ -26,35 +26,37 @@ export const Pagination = () => {
   }
 
   return (
-    <div className="pagination" data-cy="pagination">
-      <SearchLink
-        data-cy="paginationLeft"
-        className={cn('pagination__button pagination__button-prev',
-          { disablet: +page === 1 })}
-        params={{ page: `${+page - 1}` }}
-      >
-        <img src="./icon/Left.svg" alt="" />
-      </SearchLink>
-
-      {paginationNumbs.slice(1, paginationNumb).map(item => (
+    <div className="container">
+      <div className="pagination" data-cy="pagination">
         <SearchLink
-          key={item}
-          className={cn('pagination__link',
-            { active: item === +page })}
-          params={{ page: `${item}` }}
+          data-cy="paginationLeft"
+          className={cn('pagination__button pagination__button-prev',
+            { disablet: +page === 1 })}
+          params={{ page: `${+page - 1}` }}
         >
-          {`${item}`}
+          <img src="./icon/Left.svg" alt="" />
         </SearchLink>
-      ))}
 
-      <SearchLink
-        data-cy="paginationRight"
-        className={cn('pagination__button pagination__button-next',
-          { disablet: +page === paginationNumb - 1 })}
-        params={{ page: `${+page + 1}` }}
-      >
-        <img src="./icon/Right.svg" alt="right" />
-      </SearchLink>
+        {paginationNumbs.slice(1, paginationNumb).map(item => (
+          <SearchLink
+            key={item}
+            className={cn('pagination__link',
+              { active: item === +page })}
+            params={{ page: `${item}` }}
+          >
+            {`${item}`}
+          </SearchLink>
+        ))}
+
+        <SearchLink
+          data-cy="paginationRight"
+          className={cn('pagination__button pagination__button-next',
+            { disablet: +page === paginationNumb - 1 })}
+          params={{ page: `${+page + 1}` }}
+        >
+          <img src="./icon/Right.svg" alt="right" />
+        </SearchLink>
+      </div>
     </div>
   );
 };

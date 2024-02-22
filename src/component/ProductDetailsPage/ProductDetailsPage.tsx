@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import cn from 'classnames';
 import {
   Link,
+  useLocation,
   useNavigate,
   useParams,
 } from 'react-router-dom';
@@ -13,6 +14,23 @@ import { ProductsSlider } from '../ProductsSlider';
 import { ProductContext } from '../../ProductContext';
 
 const BASE_URL = 'https://mate-academy.github.io/react_phone-catalog/_new/';
+
+const iphoneColors: Record<string, string> = {
+  jetblack: '#232323',
+  black: '#000000',
+  silver: '#C0C0C0',
+  gold: '#FCDBC1',
+  rosegold: '#B76E79',
+  spacegray: '#4C4C4C',
+  red: '#FF6961',
+  white: '#F0F0F0',
+  blue: '#0000FF',
+  yellow: '#FFFF66',
+  coral: '#FF7F50',
+  purple: '#9370DB',
+  green: '#AAF0D1',
+  midnightgreen: '#5F7170',
+};
 
 export const ProductDetailsPage = () => {
   const {
@@ -29,6 +47,8 @@ export const ProductDetailsPage = () => {
   const [product, setProduct] = useState<Phone>();
   const [loading, setLoading] = useState<boolean>(false);
   const [slideActive, setSlideActive] = useState<string>('');
+
+  const { pathname } = useLocation();
 
   const { productId } = useParams<{ productId: string }>();
 
@@ -60,6 +80,20 @@ export const ProductDetailsPage = () => {
   if (loading || !product || !findProduct) {
     return <Loader />;
   }
+
+  const handleCapacityClick = (newCapacity: string) => {
+    const url = pathname;
+    const newPath = url.replace(/(\d+gb)(?=-)/, newCapacity);
+
+    navigate(newPath);
+  };
+
+  const handleColorClick = (newColor: string) => {
+    const url = pathname;
+    const newPath = url.replace(/[^-]+$/, newColor);
+
+    navigate(newPath);
+  };
 
   const goBack = () => {
     navigate(-1);
@@ -126,17 +160,29 @@ export const ProductDetailsPage = () => {
             </div>
 
             <div className="details__slider__active">
-              <img src={`${BASE_URL}${slideActive}`} alt="Phone" className="details__slider__active-img" />
+              <img
+                src={`${BASE_URL}${slideActive}`}
+                alt="Phone"
+                className="details__slider__active-img"
+              />
             </div>
           </div>
 
           <div className="details__wrap-information">
             <div className="details__colors">
-              <p className="details__colors__title">
-                Available colors
-              </p>
-
-              <div className="details__colors__color" />
+              <p className="details__colors__title">Available colors</p>
+              <div className="details__colors-wrap">
+                {/* eslint-disable jsx-a11y/control-has-associated-label */}
+                {product.colorsAvailable.map((color) => (
+                  <button
+                    type="button"
+                    key={color}
+                    className="details__colors__color"
+                    style={{ background: iphoneColors[color] }}
+                    onClick={() => handleColorClick(color)}
+                  />
+                ))}
+              </div>
             </div>
 
             <div className="details__capacity">
@@ -145,8 +191,12 @@ export const ProductDetailsPage = () => {
               <div className="details__capacity__wrap">
                 {product.capacityAvailable.map((capacity) => (
                   <button
+                    key={capacity}
                     type="button"
-                    className="details__capacity__btn"
+                    className={cn('details__capacity__btn', {
+                      active: product.id.includes(capacity.toLowerCase()),
+                    })}
+                    onClick={() => handleCapacityClick(capacity.toLowerCase())}
                   >
                     {capacity}
                   </button>
@@ -242,7 +292,7 @@ export const ProductDetailsPage = () => {
           </div>
         </div>
 
-        <div className="details__wrap">
+        <div className="details__wrap-about">
           <div className="details__about" data-cy="productDescription">
             <h2 className="details__about__title"> About </h2>
 

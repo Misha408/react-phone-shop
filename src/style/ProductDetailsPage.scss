@@ -58,20 +58,85 @@
 
   &__wrap {
     display: flex;
-    margin-bottom: 80px;
+    flex-direction: column;
+    gap: 40px;
+    margin-bottom: 56px;
+
+    @include on-tablet {
+      margin-bottom: 80px;
+      gap: 5px;
+    }
+
+    @include on-desktop {
+      flex-direction: row;
+      gap: 64px;
+    }
+
+    &-about {
+      margin-bottom: 56px;
+
+      @include on-tablet {
+        flex-direction: column;
+        gap: 64px;
+        margin-bottom: 64px;
+      }
+
+      @include on-desktop {
+        display: flex;
+        flex-direction: row;
+      }
+    }
+
+    // @include on-tablet-xl {
+    //   flex-direction: column;
+    // }
   }
 
   &__slider {
     display: flex;
     align-items: center;
+    flex-direction: column-reverse;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+    }
+
+    @include on-tablet-xl {
+      margin-bottom: 40px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 0;
+    }
+
+    &__pagination {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+
+      @include on-tablet {
+        flex-direction: column;
+        gap: 16px;
+      }
+    }
 
     &__item {
       display: block;
-      height: 80px;
-      width: 80px;
+      width: 50px;
+      height: 50px;
       border: 1px solid $gray-elements;
       background-color: #fff;
-      margin: 0 16px 16px 0;
+
+      @include on-tablet {
+        width: 35px;
+        height: 35px;
+      }
+
+      @include on-desktop {
+        width: 80px;
+        height: 80px;
+      }
 
       &:hover {
         border: 1px solid $gray-primary;
@@ -84,18 +149,30 @@
       &-img {
         margin: 0 auto;
         width: auto;
-        height: 66px;
+        height: 35px;
         border: none;
+
+        @include on-tablet {
+          height: 20px;
+        }
+
+        @include on-desktop {
+          height: 66px;
+        }
       }
     }
 
     &__active {
       display: flex;
-      justify-content: center;
       align-items: center;
-      width: 464px;
-      height: 464px;
-      margin-right: 64px;
+      justify-content: center;
+      width: 287px;
+      height: 287px;
+
+      @include on-desktop {
+        width: 464px;
+        height: 464px;
+      }
 
       &-img {
         height: 100%;
@@ -104,17 +181,31 @@
   }
 
   &__colors {
+    display: block;
     height: 75px;
     position: relative;
     margin-bottom: 24px;
 
+    &-wrap {
+      display: flex;
+      gap: 8px;
+    }
+
     &::after {
       content: '';
       position: absolute;
-      width: 320px;
+      width: 288px;
       height: 1px;
       background: $gray-elements;
       bottom: 0;
+
+      @include on-tablet {
+        width: 237px;
+      }
+
+      @include on-desktop {
+        width: 320px;
+      }
     }
 
     &__title {
@@ -128,9 +219,17 @@
       width: 32px;
       height: 32px;
       padding: 2px;
-      background: #FCDBC1;
       border: 1px solid $gray-secondary;
       border-radius: 100%;
+      transition: border 0.3s;
+
+      &:hover {
+        border: 2px solid $gray-primary;
+      }
+    }
+
+    .active {
+      border: 2px solid $gray-primary;
     }
   }
 
@@ -142,10 +241,18 @@
     &::after {
       content: '';
       position: absolute;
-      width: 320px;
+      width: 288px;
       height: 1px;
       background: $gray-elements;
       bottom: 0;
+
+      @include on-tablet {
+        width: 237px;
+      }
+
+      @include on-desktop {
+        width: 320px;
+      }
     }
 
     &__title {
@@ -155,14 +262,22 @@
       margin-bottom: 8px;
     }
 
+    &__wrap {
+      display: flex;
+      gap: 8px;
+    }
+
     &__btn {
+      display: block;
+      align-items: center;
+      padding: 4px;
       width: 63px;
       height: 32px;
       padding: 0;
       border: 1px solid $gray-icons;
       background: #fff;
-      margin-right: 8px;
       transition: 0.3s;
+      cursor: pointer;
 
       color: $gray-primary;
       text-align: center;
@@ -172,7 +287,6 @@
 
       &:hover {
         background: $gray-primary;
-
         color: #fff;
       }
 
@@ -180,10 +294,23 @@
         margin-right: 0;
       }
     }
+
+    .active {
+      background: $gray-primary;
+      color: #fff;
+    }
   }
 
   &__prise {
-    width: 320px;
+    width: 288px;
+
+    @include on-tablet {
+      width: 237px;
+    }
+
+    @include on-desktop {
+      width: 320px;
+    }
 
     &-new {
       color: $gray-primary;
@@ -213,7 +340,7 @@
 
       &-add {
         display: flex;
-        width: 260px;
+        width: 230px;
         height: 48px;
         background: $gray-primary;
 
@@ -225,6 +352,10 @@
         justify-content: center;
         align-items: center;
         cursor: pointer;
+
+        @include on-tablet {
+          width: 260px;
+        }
       }
 
       &-like {
@@ -264,8 +395,13 @@
   }
 
   &__about {
-    width: 560px;
-    margin-right: 64px;
+    width: 100%;
+    margin-bottom: 64px;
+
+    @include on-desktop {
+      width: 560px;
+      margin-right: 64px;
+    }
 
     &__title {
       position: relative;
@@ -311,7 +447,11 @@
   }
 
   &__specs {
-    width: 512px;
+    width: 100%;
+
+    @include on-desktop {
+      width: 512px;
+    }
 
     &__title {
       position: relative;

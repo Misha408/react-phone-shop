@@ -64,7 +64,7 @@ export const ProductsSlider: React.FC<Props> = ({
         modules={[Navigation, Pagination, A11y]}
         breakpoints={{
           320: {
-            slidesPerView: 1.5,
+            slidesPerView: 1.3,
           },
           640: {
             slidesPerView: 2.5,

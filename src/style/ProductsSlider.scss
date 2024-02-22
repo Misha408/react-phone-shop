@@ -6,6 +6,11 @@ $gray-white: #FFF;
 
 .phones-swiper {
   position: static;
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
 
   &-wrap {
     display: flex;
@@ -20,6 +25,7 @@ $gray-white: #FFF;
 
   &-button {
     transition: border .5s;
+
     &:hover {
       border: 1px solid $gray-primary;
     }

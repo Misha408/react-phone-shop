@@ -16,9 +16,12 @@
   }
 
   &__icon {
-    position: relative;
-    padding: 20px 72px;
+    padding: 20px 25%;
     box-shadow: -1px 0 0 0 $gray-elements;
+
+    &__wrap {
+      position: relative;
+    }
 
     &-close {
       padding: 20px 24px;
@@ -34,8 +37,8 @@
       font-weight: 600;
       background: #EB5757;
       border-radius: 100%;
-      top: 18px;
-      right: 68px;
+      left: 10px;
+      top: -3px;
     }
 
     &::after {
@@ -106,6 +109,7 @@
     bottom: 0;
     display: flex;
     height: 64px;
+    width: 100%;
     border-top: 1px solid $gray-elements;
   }
 

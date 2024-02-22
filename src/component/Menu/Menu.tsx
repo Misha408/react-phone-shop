@@ -87,34 +87,38 @@ export const Menu: React.FC<Props> = ({ setMenuActive }) => {
           to="/favourites"
           className={`menu__icon ${getLinckClass}`}
         >
-          {!!favourites.length && (
-            <span className="menu__icon__counter">
-              {favourites.length}
-            </span>
-          )}
-          {/* eslint-disable-next-line */}
-          <img
-            src="./icon/Heart.svg"
-            alt="Heart"
-            onClick={() => setMenuActive(false)}
-          />
+          <div className="menu__icon__wrap">
+            {!!favourites.length && (
+              <span className="menu__icon__counter">
+                {favourites.length}
+              </span>
+            )}
+            {/* eslint-disable-next-line */}
+            <img
+              src="./icon/Heart.svg"
+              alt="Heart"
+              onClick={() => setMenuActive(false)}
+            />
+          </div>
         </NavLink>
 
         <NavLink
           to="/card"
           className={`menu__icon ${getLinckClass}`}
         >
-          {!!cartItems.length && (
-            <span className="menu__icon__counter">
-              {cartItems.length}
-            </span>
-          )}
-          {/* eslint-disable-next-line */}
-          <img
-            src="./icon/basket.svg"
-            alt="Basket"
-            onClick={() => setMenuActive(false)}
-          />
+          <div className="menu__icon__wrap">
+            {!!cartItems.length && (
+              <span className="menu__icon__counter">
+                {cartItems.length}
+              </span>
+            )}
+            {/* eslint-disable-next-line */}
+            <img
+              src="./icon/basket.svg"
+              alt="Basket"
+              onClick={() => setMenuActive(false)}
+            />
+          </div>
         </NavLink>
 
       </div>

@@ -28,6 +28,7 @@
       border-radius: 4px;
       background-color: #fff;
       margin-bottom: 5px;
+      color: $gray-primary;
 
       @include on-tablet {
         width: 176px;

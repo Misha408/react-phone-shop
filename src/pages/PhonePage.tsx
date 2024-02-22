@@ -13,13 +13,20 @@ export const PhonePage = () => {
   const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    setLoading(true);
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const phonesData = await getPhones();
 
-    getPhones()
-      .then((phonesData) => {
         setPhones(phonesData);
-      })
-      .finally(() => setLoading(false));
+      } finally {
+        setTimeout(() => {
+          setLoading(false);
+        }, 500);
+      }
+    };
+
+    fetchData();
   }, [setPhones]);
 
   if (loading) {

@@ -10,11 +10,20 @@ export const AccessoriesPage = () => {
   const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    setLoading(true);
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const phonesData = await getAccessories();
 
-    getAccessories()
-      .then(setAccessories)
-      .finally(() => setLoading(false));
+        setAccessories(phonesData);
+      } finally {
+        setTimeout(() => {
+          setLoading(false);
+        }, 500);
+      }
+    };
+
+    fetchData();
   }, [setAccessories]);
 
   if (loading) {

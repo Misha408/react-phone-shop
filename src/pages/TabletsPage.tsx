@@ -10,11 +10,20 @@ export const TabletsPage = () => {
   const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    setLoading(true);
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const phonesData = await getTablets();
 
-    getTablets()
-      .then(setTablets)
-      .finally(() => setLoading(false));
+        setTablets(phonesData);
+      } finally {
+        setTimeout(() => {
+          setLoading(false);
+        }, 500);
+      }
+    };
+
+    fetchData();
   }, [setTablets]);
 
   if (loading) {

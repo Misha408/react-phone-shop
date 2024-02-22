@@ -10,7 +10,7 @@ export const Header = () => {
     <header className="header">
       <div className="container">
         <Swiper
-          className="swiper"
+          className="header__swiper"
           slidesPerView={1}
           navigation={{
             prevEl: '.swiper-button-prev',
@@ -24,34 +24,34 @@ export const Header = () => {
             <img
               src="img\banner-phones.jpg"
               alt="phones"
-              className="swiper-img"
+              className="header__swiper-img"
             />
           </SwiperSlide>
           <SwiperSlide data-swiper-autoplay="5000">
             <img
               src="img\banner-accessories.jpg"
               alt="accessories"
-              className="swiper-img"
+              className="header__swiper-img"
             />
           </SwiperSlide>
           <SwiperSlide data-swiper-autoplay="5000">
             <img
               src="img/banner-tablets.jpg"
               alt="tablets"
-              className="swiper-img"
+              className="header__swiper-img"
             />
           </SwiperSlide>
 
           <img
             src="./icon/Left.svg"
             alt="prev"
-            className="swiper-button swiper-button-prev"
+            className="header__swiper-button header__swiper-button-prev"
           />
 
           <img
             src="./icon/Right.svg"
             alt="next"
-            className="swiper-button swiper-button-next"
+            className="header__swiper-button header__swiper-button-next"
           />
         </Swiper>
       </div>

@@ -7,7 +7,12 @@
 
   &__wrap {
     display: flex;
+    flex-direction: column;
     gap: 16px;
+
+    @include on-desktop {
+      flex-direction: row;
+    }
   }
 
   &__total {
@@ -15,6 +20,18 @@
     height: 206px;
     border: 1px solid $gray-elements;
     padding: 24px;
+    
+    @include on-tablet {
+      width: 592px;
+    }
+
+    @include on-tablet-xl {
+      width: 720px;
+    }
+
+    @include on-desktop {
+      flex-direction: row;
+    }
 
     &__prise {
       text-align: center;
@@ -42,6 +59,14 @@
         border-bottom: 1px solid $gray-elements;
         bottom: 0;
         left: 0;
+
+        @include on-tablet {
+          width: 540px;
+        }
+
+        @include on-tablet-xl {
+          width: 670px;
+        }
       }
     }
 
@@ -57,6 +82,14 @@
       font-weight: 600;
       line-height: 21px;
       margin-bottom: 50px;
+
+      @include on-tablet {
+        width: 540px;
+      }
+
+      @include on-tablet-xl {
+        width: 670px;
+      }
     }
   }
 

@@ -1,32 +1,49 @@
 .category {
-  min-height: 508px;
-  margin-bottom: 80px;
+  margin-bottom: 24px;
+
+  @include on-tablet {
+    min-height: 330px;
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    min-height: 508px;
+    margin-bottom: 80px;
+  }
 
 
   &__title {
     color: $gray-primary;
-    font-size: 32px;
+    font-size: 22px;
     font-weight: 700;
     letter-spacing: -0.32px;
     margin-bottom: 24px;
+
+    @include on-tablet {
+      font-size: 32px;
+    }
   }
 
   &__wrap {
-    display: flex;
-    justify-content: space-between;
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      margin-bottom: 0;
+    }
   }
 
   &__item {
     text-decoration: none;
 
     &__img {
-      height: 368px;
+      width: 100%;
       margin-bottom: 24px;
       transition: transform .5s;
-      
 
-      &:hover {
-        transform: scale(1.05);
+      @include on-desktop {
+        &:hover {
+          transform: scale(1.05);
+        }
       }
     }
 

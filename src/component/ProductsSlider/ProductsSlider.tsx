@@ -1,11 +1,10 @@
-import React, { useContext, useRef } from 'react';
+import React, { useContext } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, A11y } from 'swiper/modules';
 import { ProductContext } from '../../ProductContext';
 import { Product } from '../../Type/Product';
 import { ProductCard } from '../ProductCard';
 
-// import './ProductsSlider.scss';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
@@ -21,8 +20,6 @@ export const ProductsSlider: React.FC<Props> = ({
   sale,
 }) => {
   const { products } = useContext(ProductContext);
-
-  const swiperRef = useRef<typeof Swiper | null>(null);
 
   const filteredProduct = (): Product[] => {
     if (filterByYears) {
@@ -59,23 +56,29 @@ export const ProductsSlider: React.FC<Props> = ({
 
       <Swiper
         className="phones-swiper"
-        slidesPerView={4}
+        spaceBetween={16}
         navigation={{
           prevEl: '.phones-swiper-button-prev',
           nextEl: '.phones-swiper-button-next',
         }}
-        onSwiper={(swiper: typeof Swiper) => {
-          swiperRef.current = swiper;
-        }}
         modules={[Navigation, Pagination, A11y]}
+        breakpoints={{
+          320: {
+            slidesPerView: 1.5,
+          },
+          640: {
+            slidesPerView: 2.5,
+          },
+          1200: {
+            slidesPerView: 4,
+          },
+        }}
       >
-
         {filteredProduct().map((product) => (
           <SwiperSlide key={product.id} className="phones-swiper-slide">
             <ProductCard product={product} sale={sale} />
           </SwiperSlide>
         ))}
-
       </Swiper>
     </>
   );

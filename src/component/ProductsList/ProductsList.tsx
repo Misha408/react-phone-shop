@@ -61,14 +61,16 @@ export const ProductsList: React.FC<Props> = ({ product }) => {
     perPage]);
 
   return (
-    <div className="ProductsList" data-cy="productList">
-      {perPage !== 'all'
-        ? (filterdProducts.slice(sliseFrom, sliseTo).map(phone => (
-          <ProductCard key={phone.id} product={phone} sale />
-        )))
-        : (filterdProducts.map(phone => (
-          <ProductCard key={phone.id} product={phone} sale />
-        )))}
+    <div className="container">
+      <div className="ProductsList" data-cy="productList">
+        {perPage !== 'all'
+          ? (filterdProducts.slice(sliseFrom, sliseTo).map(phone => (
+            <ProductCard key={phone.id} product={phone} sale />
+          )))
+          : (filterdProducts.map(phone => (
+            <ProductCard key={phone.id} product={phone} sale />
+          )))}
+      </div>
     </div>
   );
 };

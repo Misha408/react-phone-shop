@@ -1,54 +1,99 @@
-$gray-primary: #313237;
-$gray-secondary: #89939A;
-$gray-icons: #B4BDC3;
-$gray-elements: #E2E6E9;
-$gray-white: #FFF;
+@import '../../style/utils/vars.scss';
+@import '../../style/utils/mixins';
+@import '../../style/container';
+@import '../../style/grid';
 
-.swiper {
-  height: 430px;
+.header {
   position: relative;
-  display: flex;
+  height: 350px;
   margin-bottom: 70px;
 
-  &-img {
-    display: block;
-    height: 400px;
-    width: 1040px;
-    margin: 0 auto;
-    margin-bottom: 8px;
-    object-fit: cover;
+  @include on-tablet {
+    height: 220px;
+    margin-bottom: 60px;
   }
 
-  &-button {
+  @include on-desktop {
+    height: 430px;
+  }
+
+  &__swiper {
+    height: 350px;
+    width: 100%;
     position: absolute;
     display: flex;
-    width: 32px;
-    height: 400px;
-    border: 1px solid $gray-icons;
-    z-index: 10;
-    cursor: pointer;
+    left: 0;
 
-    &:hover {
-      border: 1px solid $gray-primary;
+    @include on-tablet {
+      position: relative;
+      height: 220px;
+      width: calc(100% - 64px - 40px);
     }
 
-    &-next {
-      right: 0;
-      justify-content: end;
+    @include on-desktop {
+      height: 430px;
+      width: calc(100% - 64px - 32px);
     }
-  }
 
-  .swiper-pagination {
-    display: block;
+    &-img {
+      height: 320px;
+      width: 100%;
+      object-fit: cover;
 
-    &-bullet {
-      height: 3px;
-      width: 14px;
-      border-radius: 0;
-      background-color: $gray-secondary;
+      @include on-tablet {
+        display: block;
+        margin: 0 auto;
+        height: 190px;
+        width: calc(100% - 64px - 40px);
+      }
 
-      &-active {
-        background-color: $gray-primary;
+      @include on-desktop {
+        height: 400px;
+        width: calc(100% - 64px - 32px);
+      }
+    }
+
+    &-button {
+      position: absolute;
+      width: 32px;
+      border: 1px solid $gray-icons;
+      z-index: 10;
+      cursor: pointer;
+      display: none;
+
+      @include on-tablet {
+        height: 190px;
+        display: flex;
+      }
+
+      @include on-desktop {
+        height: 400px;
+      }
+
+      &:hover {
+        border: 1px solid $gray-primary;
+      }
+
+      &-next {
+        right: 0;
+        justify-content: end;
+      }
+    }
+
+    .swiper-pagination {
+      position: absolute;
+      display: block;
+      bottom: 0;
+
+      &-bullet {
+        height: 3px;
+        width: 14px;
+        border-radius: 0;
+        background-color: $gray-secondary;
+
+        &-active {
+          background-color: $gray-primary;
+        }
       }
     }
   }

@@ -1,0 +1,83 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 16px;
+  margin: 0 auto;
+
+  @include on-tablet {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include on-tablet-xl {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(24, 1fr);
+    column-gap: 16px;
+  }
+
+  &--tablet {
+    display: block;
+
+    @include on-desktop {
+      display: grid;
+    }
+  }
+
+  &--tablet-xl {
+    display: block;
+
+    @include on-desktop {
+      display: grid;
+    }
+  }
+
+  &--desktop {
+    display: block;
+
+    @include on-desktop {
+      display: grid;
+    }
+  }
+
+  &__item {
+    @for $start from 1 through 4 {
+      @for $end from $start through 4 {
+        &--#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end + 1} ;
+        }
+      }
+    }
+
+    @include on-tablet {
+      @for $start from 1 through 12 {
+        @for $end from $start through 12 {
+          &--tablet-#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end + 1} ;
+          }
+        }
+      }
+    }
+
+    @include on-tablet-xl {
+      @for $start from 1 through 12 {
+        @for $end from $start through 12 {
+          &--tablet-#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end + 1} ;
+          }
+        }
+      }
+    }
+
+    @include on-desktop {
+      @for $start from 1 through 24 {
+        @for $end from $start through 24 {
+          &--desktop-#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end + 1} ;
+          }
+        }
+      }
+    }
+  }
+}

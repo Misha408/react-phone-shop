@@ -1,12 +1,20 @@
 .footer {
-  height: 96px;
+  height: 255px;
   border-top: 1px solid $gray-elements;
-  padding: 36px 0;
+  padding: 32px 0 0 0;
+
+  @include on-tablet {
+    height: 100px;
+  }
 
   &__content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: block;
+
+    @include on-tablet {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
   }
 
   &__logo {
@@ -15,9 +23,32 @@
     background-repeat: no-repeat;
     padding-right: 64px;
     height: 24px;
+    margin-bottom: 32px;
+    display: block;
+
+    @include on-tablet {
+      margin-bottom: 0;
+    }
+  }
+
+  &__wrap {
+    display: block;
+    gap: 14px;
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0;
+    }
+
+    @include on-desktop {
+      gap: 64px;
+    }
   }
 
   &__link {
+    display: block;
     text-decoration: none;
     color: $gray-secondary;
     font-size: 12px;
@@ -25,21 +56,28 @@
     line-height: 11px;
     letter-spacing: 0.48px;
     text-transform: uppercase;
-    padding-left: 64px;
+    margin-bottom: 16px;
     transition: color .5s;
+
+    @include on-tablet {
+      padding-left: 14px;
+      padding: 20px 0;
+      margin-bottom: 0;
+    }
 
     &:hover {
       color: $gray-primary;
-    }
-
-    &:first-child {
-      padding-left: 0;
     }
   }
 
   &__top {
     display: flex;
     align-items: center;
+    justify-content: center;
+
+    @include on-tablet {
+      justify-content: start;
+    }
 
     &__text {
       color: $gray-secondary;

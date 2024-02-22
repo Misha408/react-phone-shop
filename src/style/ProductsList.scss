@@ -1,7 +1,19 @@
 .ProductsList {
   display: grid;
-  grid-template-columns: repeat(4, 272px);
+  grid-template-columns: repeat(1, 1fr);
   gap: 40px 16px;
   justify-content: center;
   margin-bottom: 40px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include on-tablet-xl {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }

@@ -1,9 +1,23 @@
 .card {
-  width: 272px;
   height: 507px;
-  padding: 32px 24px 24px;
+  padding: 32px 14px 14px;
   border: 1px solid $gray-elements;
   transition: border .5s;
+  margin: 0 auto;
+
+  @include on-tablet {
+    width: 220px;
+    padding: 32px 14px 14px;
+  }
+
+  @include on-tablet-xl {
+    width: 230px;
+  }
+
+  @include on-desktop {
+    width: 272px;
+    padding: 32px 24px 24px;
+  }
 
   &:hover {
     border: 1px solid $gray-primary;
@@ -11,9 +25,13 @@
 
   &__img {
     display: block;
-    height: 208px;
+    height: 180px;
     margin: 0 auto;
     margin-bottom: 24px;
+
+    @include on-tablet {
+      height: 208px;
+    }
   }
 
   &__title {
@@ -88,9 +106,17 @@
 
     &-add {
       display: flex;
-      width: 176px;
+      width: 100px;
       height: 40px;
       background: $gray-primary;
+
+      @include on-tablet {
+        width: 125px;
+      }
+
+      @include on-desktop {
+        width: 176px;
+      }
 
       text-decoration: none;
       color: $gray-white;

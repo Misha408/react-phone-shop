@@ -2,6 +2,12 @@
   display: flex;
   justify-content: center;
   margin-bottom: 80px;
+  padding: 0 16px;
+
+  @include on-tablet {
+    width: 640px;
+    padding: 0 24px;
+  }
 
   .active {
     background: $gray-primary;

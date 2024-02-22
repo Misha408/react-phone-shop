@@ -9,6 +9,7 @@ import {
 import { ProductContext } from '../../ProductContext';
 import { PathName } from '../../enums';
 import { SearchParams, getSearchWith } from '../../utils/searchHelper';
+import { Menu } from '../Menu';
 
 const getLinckClass = (
   { isActive }: { isActive: boolean },
@@ -25,6 +26,7 @@ export const NavBar = () => {
   const { pathname } = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
   const [isActive, setIsActive] = useState<boolean>(false);
+  const [menuActive, setMenuActive] = useState<boolean>(false);
 
   const query = searchParams.get('query') || '';
 
@@ -61,6 +63,16 @@ export const NavBar = () => {
     setIsActive(false);
     setSearchWith({ query: null });
   };
+
+  if (menuActive) {
+    document.body.style.overflow = 'hidden';
+
+    return (
+      <Menu setMenuActive={setMenuActive} />
+    );
+  }
+
+  document.body.style.overflow = 'auto';
 
   return (
     <nav className="nav">
@@ -130,6 +142,13 @@ export const NavBar = () => {
 
           </div>
         )}
+        {/* eslint-disable-next-line */}
+        <img
+          className="nav__icon-menu"
+          src="./icon/Menu.svg"
+          alt="Menu"
+          onClick={() => setMenuActive(true)}
+        />
 
         <NavLink
           to="/favourites"

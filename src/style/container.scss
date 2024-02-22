@@ -1,0 +1,20 @@
+.container {
+  width: 320px;
+  margin: 0 auto;
+  padding: 0 16px;
+
+  @include on-tablet {
+    width: 640px;
+    padding: 0 24px;
+  }
+
+  @include on-tablet-xl {
+    width: 768px;
+    padding: 0 24px;
+  }
+
+  @include on-desktop {
+    width: 1200px;
+    padding: 0 40px;
+  }
+};

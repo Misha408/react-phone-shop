@@ -1,4 +1,8 @@
-@import './style/vars';
+@import './style/utils/vars';
+@import './style/utils/mixins';
+@import './style/container';
+@import './style/grid';
+@import './style/Menu';
 @import './style/Cart';
 @import './style/CartItem';
 @import './style/Category';

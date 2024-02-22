@@ -1,5 +1,8 @@
 .title {
   display: block;
-  
-  min-height: calc(100vh - 100px - 96px);
+  min-height: calc(100vh - 255px - 96px);
+
+  @include on-tablet {
+    min-height: calc(100vh - 100px - 96px);
+  }
 }

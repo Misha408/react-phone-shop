@@ -131,6 +131,29 @@ export const ProductDetailsPage = () => {
           </div>
 
           <div className="details__wrap-information">
+            <div className="details__colors">
+              <p className="details__colors__title">
+                Available colors
+              </p>
+
+              <div className="details__colors__color" />
+            </div>
+
+            <div className="details__capacity">
+              <div className="details__capacity__title"> Select capacity </div>
+
+              <div className="details__capacity__wrap">
+                {product.capacityAvailable.map((capacity) => (
+                  <button
+                    type="button"
+                    className="details__capacity__btn"
+                  >
+                    {capacity}
+                  </button>
+                ))}
+              </div>
+            </div>
+
             <div className="details__prise">
               <div className="details__prise__wrap">
                 <p className="details__prise-new">

@@ -19,51 +19,55 @@ export const CartItem: React.FC<Props> = ({ cart }) => {
 
   return (
     <div className="cart__item">
-      <button
-        type="button"
-        data-cy="cartDeleteButton"
-        className="cart__item__remove"
-        onClick={() => deleteCart(id)}
-      >
-        <img src="./icon/Close.svg" alt="Close" />
-      </button>
-
-      <img
-        src={`${BASE_URL}${product.image}`}
-        alt="phone"
-        className="cart__item__img"
-      />
-
-      <p className="cart__item__title">
-        {product.name}
-      </p>
-
-      <div className="cart__item__quantity">
+      <div className="cart__item__wrap">
         <button
           type="button"
-          className="cart__item__quantity__btn"
-          onClick={() => minusQuantity(id, quantity)}
-          disabled={quantity === 1}
+          data-cy="cartDeleteButton"
+          className="cart__item__remove"
+          onClick={() => deleteCart(id)}
         >
-          <img src="./icon/Minus.svg" alt="Close" />
+          <img src="./icon/Close.svg" alt="Close" />
         </button>
 
-        <p className="cart__item__quantity__num">
-          {quantity}
+        <img
+          src={`${BASE_URL}${product.image}`}
+          alt="phone"
+          className="cart__item__img"
+        />
+
+        <p className="cart__item__title">
+          {product.name}
         </p>
-
-        <button
-          type="button"
-          className="cart__item__quantity__btn"
-          onClick={() => plusQuantity(id, quantity)}
-        >
-          <img src="./icon/Plus.svg" alt="Close" />
-        </button>
       </div>
 
-      <h2 className="cart__item__price">
-        {`$${quantity * product.fullPrice}`}
-      </h2>
+      <div className="cart__item__wrap-quantity">
+        <div className="cart__item__quantity">
+          <button
+            type="button"
+            className="cart__item__quantity__btn"
+            onClick={() => minusQuantity(id, quantity)}
+            disabled={quantity === 1}
+          >
+            <img src="./icon/Minus.svg" alt="Close" />
+          </button>
+
+          <p className="cart__item__quantity__num">
+            {quantity}
+          </p>
+
+          <button
+            type="button"
+            className="cart__item__quantity__btn"
+            onClick={() => plusQuantity(id, quantity)}
+          >
+            <img src="./icon/Plus.svg" alt="Close" />
+          </button>
+        </div>
+
+        <h2 className="cart__item__price">
+          {`$${quantity * product.fullPrice}`}
+        </h2>
+      </div>
     </div>
   );
 };

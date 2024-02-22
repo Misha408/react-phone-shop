@@ -16,13 +16,14 @@
   }
 
   &__total {
-    width: 368px;
-    height: 206px;
+    width: 288px;
+    height: 190px;
     border: 1px solid $gray-elements;
     padding: 24px;
-    
+
     @include on-tablet {
       width: 592px;
+      margin-bottom: 32px;
     }
 
     @include on-tablet-xl {
@@ -30,6 +31,8 @@
     }
 
     @include on-desktop {
+      width: 368px;
+      height: 206px;
       flex-direction: row;
     }
 
@@ -54,7 +57,7 @@
       &::after {
         position: absolute;
         content: '';
-        width: 320px;
+        width: 249px;
         height: 1px;
         border-bottom: 1px solid $gray-elements;
         bottom: 0;
@@ -67,11 +70,15 @@
         @include on-tablet-xl {
           width: 670px;
         }
+
+        @include on-desktop {
+          width: 320px;
+        }
       }
     }
 
     &__btn {
-      width: 320px;
+      width: 249px;
       height: 48px;
       background: $gray-primary;
       cursor: pointer;
@@ -89,6 +96,10 @@
 
       @include on-tablet-xl {
         width: 670px;
+      }
+
+      @include on-desktop {
+        width: 320px;
       }
     }
   }

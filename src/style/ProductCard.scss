@@ -1,12 +1,14 @@
 .card {
-  height: 507px;
-  padding: 32px 14px 14px;
+  width: 200px;
+  height: 457px;
+  padding: 20px 14px 14px;
   border: 1px solid $gray-elements;
   transition: border .5s;
   margin: 0 auto;
 
   @include on-tablet {
     width: 220px;
+    height: 507px;
     padding: 32px 14px 14px;
   }
 
@@ -111,7 +113,7 @@
       background: $gray-primary;
 
       @include on-tablet {
-        width: 125px;
+        width: 150px;
       }
 
       @include on-desktop {

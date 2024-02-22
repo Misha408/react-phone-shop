@@ -69,6 +69,9 @@ export const ProductsSlider: React.FC<Props> = ({
           640: {
             slidesPerView: 2.5,
           },
+          768: {
+            slidesPerView: 3,
+          },
           1200: {
             slidesPerView: 4,
           },

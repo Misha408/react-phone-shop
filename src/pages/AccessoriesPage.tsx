@@ -15,11 +15,11 @@ export const AccessoriesPage = () => {
         setLoading(true);
         const phonesData = await getAccessories();
 
-        setAccessories(phonesData);
-      } finally {
         setTimeout(() => {
-          setLoading(false);
+          setAccessories(phonesData);
         }, 500);
+      } finally {
+        setLoading(false);
       }
     };
 

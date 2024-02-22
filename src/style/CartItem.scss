@@ -4,7 +4,7 @@
   border: 1px solid $gray-elements;
   display: flex;
   flex-direction: column;
-  
+
   padding: 16px;
   gap: 24px;
   margin-bottom: 16px;
@@ -56,14 +56,6 @@
   &__img {
     width: 50px;
     height: 66px;
-
-    @include on-tablet {
-      margin-right: 24px;
-    }
-
-    @include on-desktop {
-      margin-right: 30px;
-    }
   }
 
   &__title {
@@ -74,7 +66,7 @@
     line-height: 21px;
 
     @include on-tablet {
-      width: 295px;
+      width: 290px;
     }
   }
 

@@ -13,8 +13,8 @@ export const Header = () => {
           className="header__swiper"
           slidesPerView={1}
           navigation={{
-            prevEl: '.swiper-button-prev',
-            nextEl: '.swiper-button-next',
+            prevEl: '.header__swiper-button-prev',
+            nextEl: '.header__swiper-button-next',
           }}
           loop
           pagination

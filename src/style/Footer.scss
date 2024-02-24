@@ -94,6 +94,9 @@
       background: #fff;
       cursor: pointer;
       transition: border .5s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
       &:hover {
         border: 1px solid $gray-primary;
